@@ -1,10 +1,10 @@
-package om.app.thinknshare.user_service;
+package com.app.thinknshare.blog;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UserServiceApplicationTests {
+class BlogServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

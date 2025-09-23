@@ -1,4 +1,4 @@
-package com.app.thinknshare.blog_service;
+package com.app.thinknshare.blog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
