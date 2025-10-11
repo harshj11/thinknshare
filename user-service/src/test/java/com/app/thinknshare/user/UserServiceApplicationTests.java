@@ -1,4 +1,4 @@
-package om.app.thinknshare.user;
+package com.app.thinknshare.user;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

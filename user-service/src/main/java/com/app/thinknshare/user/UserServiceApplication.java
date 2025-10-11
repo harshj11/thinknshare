@@ -1,4 +1,4 @@
-package om.app.thinknshare.user;
+package com.app.thinknshare.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
