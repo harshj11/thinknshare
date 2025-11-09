@@ -1,12 +1,24 @@
 package com.app.thinknshare.user.controller;
 
+import com.app.thinknshare.user.dtos.AuthResponse;
+import com.app.thinknshare.user.dtos.LoginRequest;
 import com.app.thinknshare.user.dtos.RegisterUserRequest;
 import com.app.thinknshare.user.entity.User;
+import com.app.thinknshare.user.exception.ErrorResponse;
+import com.app.thinknshare.user.service.JwtService;
 import com.app.thinknshare.user.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +37,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<String> createUser(@Valid @RequestBody RegisterUserRequest userDetails) {
 
-        userService.validateUsername(userDetails.getUsername());
+        userService.validateUserDetails(userDetails);
 
         String password = userDetails.getPassword();
         String hashedPassword = passwordEncoder.encode(password);

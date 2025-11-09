@@ -1,6 +1,8 @@
 package com.app.thinknshare.user.service;
 
+import com.app.thinknshare.user.dtos.RegisterUserRequest;
 import com.app.thinknshare.user.entity.User;
+import com.app.thinknshare.user.exception.EmailAlreadyTaken;
 import com.app.thinknshare.user.exception.UserNotFoundException;
 import com.app.thinknshare.user.exception.UsernameAlreadyTakenException;
 import com.app.thinknshare.user.repository.UserRepository;
@@ -22,8 +24,13 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public void validateUsername(String username) {
-        userRepository.findByUsername(username)
+    public void validateUserDetails(RegisterUserRequest userDetails) {
+        userRepository.findByEmail(userDetails.getEmail())
+                .ifPresent(foundUser -> {
+                    throw new EmailAlreadyTaken("Email already registered!");
+                });
+
+        userRepository.findByUsername(userDetails.getUsername())
                 .ifPresent(foundUser -> {
                     throw new UsernameAlreadyTakenException("Username is already taken!");
                 });

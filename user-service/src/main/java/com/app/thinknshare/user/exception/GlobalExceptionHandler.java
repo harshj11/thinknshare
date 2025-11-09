@@ -19,8 +19,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(UsernameAlreadyTakenException.class)
-    public ResponseEntity<ErrorResponse> handlerUsernameAlreadyTakenException(UsernameAlreadyTakenException ex) {
+    @ExceptionHandler({ UsernameAlreadyTakenException.class, EmailAlreadyTaken.class })
+    public ResponseEntity<ErrorResponse> handlerUsernameOrEmailAlreadyTakenException(RuntimeException ex) {
         ErrorResponse error = new ErrorResponse(
                 HttpStatus.CONFLICT.value(),
                 ex.getMessage()
