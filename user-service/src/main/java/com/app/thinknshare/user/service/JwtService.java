@@ -24,7 +24,7 @@ public class JwtService {
                         .collect(Collectors.joining(","))
                 )
                 .issuedAt(new Date())
-                .expiration(new Date(new Date().getTime() + 30000000))
+                .expiration(new Date(new Date().getTime() + 600000))
                 .signWith(secretKey).compact();
     }
 }
