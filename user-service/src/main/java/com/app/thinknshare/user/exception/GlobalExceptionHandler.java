@@ -49,4 +49,14 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(error, HttpStatus.UNAUTHORIZED);
     }
+
+    @ExceptionHandler(RefreshException.class)
+    public ResponseEntity<ErrorResponse> handleRefreshException(RefreshException ex) {
+        ErrorResponse error = new ErrorResponse(
+                HttpStatus.FORBIDDEN.value(),
+                ex.getMessage()
+        );
+
+        return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
+    }
 }

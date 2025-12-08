@@ -9,6 +9,8 @@ import com.app.thinknshare.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -18,6 +20,11 @@ public class UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new UserNotFoundException("User with username " + username + " not found"));
+    }
+
+    public User findByUserId(UUID uuid) {
+        return userRepository.findById(uuid)
+                .orElseThrow(() -> new UserNotFoundException("User with id " + uuid + " not found"));
     }
 
     public User saveUser(User user) {
