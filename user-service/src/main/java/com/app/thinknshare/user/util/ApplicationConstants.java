@@ -6,4 +6,7 @@ public class ApplicationConstants {
     public static final String USERNAME = "username";
     public static final String AUTHORITIES = "authorities";
     public static final String AUTHORIZATION = "Authorization";
+    public static final String REFRESH_TOKEN_COOKIE_NAME = "refresh_token";
+    public static final String SUB = "sub";
+    public static final String TOKEN_VERSION = "tokenVersion";
 }

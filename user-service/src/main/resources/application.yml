@@ -1,0 +1,7 @@
+thinknshare:
+  jwt:
+    issuer: "thinknshare-user-service"
+    audience: "thinknshare-api"
+    access-token-ttl-minutes: 15
+    jwks:
+      cache-seconds: 900

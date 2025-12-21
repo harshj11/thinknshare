@@ -24,4 +24,7 @@ public class User {
     
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles;
+
+    @Column(columnDefinition = "integer default 0")
+    private Integer tokenVersion = 0;
 }

@@ -21,7 +21,10 @@ public class ProjectSecurityConfiguration {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(sessionConfig -> sessionConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(requests -> requests.requestMatchers("/api/v1/user/**")
+                .authorizeHttpRequests(requests -> requests.requestMatchers(
+                        "/api/v1/user/**",
+                                "/api/v1/auth/**",
+                                "/.well-known/jwks.json")
                         .permitAll()
                         .anyRequest().authenticated()
                 )
